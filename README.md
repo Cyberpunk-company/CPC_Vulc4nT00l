@@ -1,3 +1,5 @@
+![](./README.assets/LOGO_STACKED.svg)
+
 # CPC_Vulc4nT00l
 
 Full-BASH minifier for HTML/CSS/JS
