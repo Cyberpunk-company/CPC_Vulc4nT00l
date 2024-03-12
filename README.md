@@ -9,7 +9,24 @@ https://cyberpunk.company/Vulc4nT00l
 ## SYNOPSIS
 
 ```bash
-./vulc4n.sh ./index.html ./index.min.html
+$ ./vulc4n.sh test.html test.html.min
+
+ 
+  ▞▚ ▚▗▘▛▚ ▛▀ ▛▚ ▛▚ ▌▐ ▙▐ ▌▞  ▞▚ ▞▚ ▙▟ ▛▚ ▞▚ ▙▐ ▚▗▘
+  ▌▗  ▌ ▛▚ ▛  ▛▚ ▛▘ ▌▐ ▌▜ ▛▖  ▌▗ ▌▐ ▌▐ ▛▘ ▛▜ ▌▜  ▌ 
+  ▝▘  ▘ ▀▘ ▀▀ ▘▝ ▘  ▝▘ ▘▝ ▘▝ ▘▝▘ ▝▘ ▘▝ ▘  ▘▝ ▘▝  ▘ 
+        https://cyberpunk.company/tixlegeek
+      Copyright© 2024 Cyberpunk.company GPLv3
+           This program is free software
+                  See LICENSE.txt 
+ 
+---------------------------------------------------
+ Vulc4nT00l is a full-BASH minifier for HTML/CSS/JS
+
+
+Result wrote to test.html.min
+IN: 740b	OUT:237b 	-67.00%
+
 ```
 
 ## DESCRIPTION
