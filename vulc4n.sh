@@ -38,13 +38,13 @@ fi
     # Set of rules that results in a minifying of about any web file
     # Removing comments, redundant characters, and unefficient stuffs
     cat $INPUT_FILE | \
-    sed -e '/<!--/,/-->/d' \
-    -e "s|/\*\(\\\\\)\?\*/|/~\1~/|g"  \
-    -e "s|/\*[^*]*\*\+\([^/][^*]*\*\+\)*/||g"  \
-    -e "s|\([^:/]\)//.*$|\1|" -e "s|^//.*$||" | \
-    tr '\n' ' ' |  \
-    sed -e "s|/\*[^*]*\*\+\([^/][^*]*\*\+\)*/||g"  \
-    -e "s|/\~\(\\\\\)\?\~/|/*\1*/|g"  \
-    -e "s|\s\+| |g"  \
-    -e "s| \([{;:,]\)|\1|g"  \
-    -e "s|\([{;:,]\) |\1|g" > "$OUTPUT_FILE"
+    sed -e '/<!--/,/-->/d' \                          # Delete HTML comment blocks that start with <!-- and end with -->
+    -e "s|/\*\(\\\\\)\?\*/|/~\1~/|g"  \               # Temporarily replace escaped block comment endings (*/) with a placeholder /~1~/
+    -e "s|/\*[^*]*\*\+\([^/][^*]*\*\+\)*/||g"  \      # Remove CSS/JS block comments, but not the ones replaced in the previous step
+    -e "s|\([^:/]\)//.*$|\1|" -e "s|^//.*$||" | \     # Remove single-line comments, taking care not to remove URLs or other instances of double slashes within code
+    tr '\n' ' ' |  \                                  # Replace all newlines with spaces, effectively putting the code on a single line
+    sed -e "s|/\*[^*]*\*\+\([^/][^*]*\*\+\)*/||g"  \  # Again, remove CSS/JS block comments that might have been missed
+    -e "s|/\~\(\\\\\)\?\~/|/*\1*/|g"  \               # Restore temporarily replaced block comment endings with their original form (*/)
+    -e "s|\s\+| |g"  \                                # Collapse multiple spaces into a single space
+    -e "s| \([{;:,]\)|\1|g"  \                        # Remove spaces before certain punctuation characters
+    -e "s|\([{;:,]\) |\1|g" > "$OUTPUT_FILE"          # Remove spaces after certain punctuation characters, then output to file
